@@ -1,0 +1,6 @@
+name: exchange_rate
+target: OT
+features: M
+time_enc: simple
+freq: H
+channels: 8

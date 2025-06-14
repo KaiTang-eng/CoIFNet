@@ -1,0 +1,51 @@
+n_run: 3
+seed: 1
+device: "cuda"
+
+miss:
+  rate: 0.3
+  # type: "MAR" # missing-at-random
+  # type: "BlockF" # block-fix
+  type: "BlockR" # block-random
+  block_len: 10
+  block_width: 5
+lr: 0.001
+max_epochs: 100
+batch_size: 512
+num_workers: 4
+scaler: "standard"
+
+data_root: "/data/raw"
+data_cache: "data/"
+
+early_stopping: True
+early_stop_metric: "mae"
+patience: 10
+
+is_save_results: True
+is_save_samples: False
+valid_is_missing: True
+is_save_model: True
+
+mlflow:
+  exp_name: CoIFNet
+  type: End2End
+  datatype: MTSF
+  # tracking_uri: http://222.18.54.16:51234
+  description: "CoIFNet in MTSF with missing data"
+  tags:
+    version: v1
+    label: a100
+
+model:
+  seq_len: 96
+  pred_len: 96
+  extra_mask_rate: 0
+
+  loss_type: "l1"
+  loss_lambda: 0.1
+
+defaults:
+  - _self_
+  - dataset: etth1
+  - model: CoIFNet

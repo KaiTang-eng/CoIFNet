@@ -1,0 +1,6 @@
+name: weather
+target: OT
+features: M
+time_enc: simple
+freq: H
+channels: 21

@@ -1,0 +1,14 @@
+type: Forecast 
+name: TimeLLM
+
+task_name: long_term_forecast
+d_ff: 128
+llm_dim: 4096 # LLama7b:4096; GPT2-small:768; BERT-base:768
+llm_model: LLAMA # LLAMA, GPT2, BERT
+patch_len: 16
+stride: 8
+llm_layers: 32 # 6
+prompt_domain: 0
+dropout: 0.1
+d_model: 32
+n_heads: 8

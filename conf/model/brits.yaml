@@ -1,0 +1,5 @@
+type: Imputation
+name: BRITS
+
+# d-hidden: 64
+d_hidden: 256

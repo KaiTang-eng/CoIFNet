@@ -1,0 +1,11 @@
+type: Forecast
+name: iTransformer
+dim: 256
+depth: 6
+heads: 8
+dim_head: 64
+num_tokens: 1
+use_reversible: true
+# num_mem_tokens: 4
+num_mem_tokens: -1
+loss_type: l2

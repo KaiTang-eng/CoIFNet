@@ -1,0 +1,14 @@
+type: Forecast
+name: STID
+num_nodes: 7
+embed_dim: 2048
+num_layer: 1
+if_node: true
+node_dim: 8
+if_T_i_D: true
+if_D_i_W: true
+temp_dim_tid: 8
+temp_dim_diw: 8
+time_of_day_size: 24
+day_of_week_size: 7
+input_dim: 1

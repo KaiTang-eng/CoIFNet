@@ -1,0 +1,23 @@
+type: Forecast
+name: BiaTCGNet
+gcn_true: true
+buildA_true: true
+gcn_depth: 5
+kernel_set: [2, 3, 6, 7]
+device: cuda
+predefined_A: null
+static_feat: null
+dropout: 0.3
+subgraph_size: 5
+node_dim: 40
+dilation_exponential: 1
+conv_channels: 32
+residual_channels: 32
+skip_channels: 64
+end_channels: 128
+in_dim: 1
+out_dim: 1
+layers: 1
+propalpha: 0.05
+tanhalpha: 3
+layer_norm_affline: true

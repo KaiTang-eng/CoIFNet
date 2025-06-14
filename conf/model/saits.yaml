@@ -1,0 +1,26 @@
+type: Imputation
+name: SAITS
+# whether concat input with missing mask
+input_with_mask: True
+# ; num of layer groups
+n_groups: 1
+# ; num of group-inner layers
+n_group_inner_layers: 1
+# ; how to share parameters, inner_group/between_group
+param_sharing_strategy: inner_group
+# ; model hidden dim
+d_model: 1024
+# ; hidden size of feed forward layer
+d_inner: 128
+# ; head num of self-attention
+n_head: 8
+# ; key dim
+d_k: 128
+# ; value dim
+d_v: 128
+# ; drop out rate
+dropout: 0.2
+# ; whether to apply diagonal attention mask
+diagonal_attention_mask: True
+# ; whether to have Masked Imputation Task (MIT) in training
+MIT: True

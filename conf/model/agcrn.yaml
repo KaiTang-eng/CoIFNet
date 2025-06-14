@@ -1,0 +1,11 @@
+type: Forecast
+name: AGCRN
+embed_dim: 20
+input_dim: 1
+output_dim: 1
+
+rnn_units: 64
+num_layers: 2
+cheb_k: 2
+dropout: 0.2
+use_norm: False

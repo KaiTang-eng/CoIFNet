@@ -1,0 +1,40 @@
+type: Forecast
+name: PatchTST
+fc_dropout: 0.05
+head_dropout: 0.0
+# patch_len: 16
+patch_len: 4
+stride: 2
+padding_patch: end
+revin: 1
+affine: 0
+subtract_last: 0
+decomposition: 0
+kernel_size: 25
+individual: 0
+embed_type: 0
+# enc_in: 7
+# dec_in: 7
+# c_out: 7
+d_model: 512
+n_heads: 8
+e_layers: 2
+d_layers: 1
+d_ff: 2048
+moving_avg: 25
+factor: 1
+distil: true
+dropout: 0.05
+embed: timeF
+activation: gelu
+output_attention: false
+do_predict: false
+#
+
+# num_nodes: 321
+# first_num_nodes: 261
+# input_dim: 1
+# output_dim: 1
+# lag: 12
+# horizon: 12
+# label_len: 6

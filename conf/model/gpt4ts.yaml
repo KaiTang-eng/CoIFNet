@@ -1,0 +1,10 @@
+type: Forecast 
+name: GPT4TS
+
+is_gpt: true
+pretrain: true
+gpt_layers: 3
+patch_size: 16
+d_model: 768
+freeze: true
+stride: 8

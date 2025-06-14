@@ -1,0 +1,32 @@
+type: CoIFNet
+name: CoIFNet
+
+use_reconstruct: true
+
+# Mask Related
+use_mask: true
+
+# Time Feature
+use_feat: true
+use_feat_emb: true
+temp_dim_tid: 8
+temp_dim_tiw: 8
+
+# ## RevIN
+revin: true
+revin_affine: true
+is_RevON: true
+
+# ## Model
+intra_type: TSBlock
+inter_type: TSBlock
+
+hidden: 256
+
+dropout: 0.1
+
+use_head: true
+
+loss_lambda: 0.1
+
+
