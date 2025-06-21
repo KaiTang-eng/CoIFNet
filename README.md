@@ -1,28 +1,35 @@
 
-# CoIFNet: Collaborative Imputation and Forecasting Network
+# CoIFNet: A Unified Framework for Multivariate Time Series Forecasting with Missing Values
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![arXiv](https://img.shields.io/badge/arXiv-2506.13064-b31b1b.svg)](https://arxiv.org/abs/2506.13064)
+
 
 Official implementation of the paper **CoIFNet: A Unified Framework for Multivariate Time Series Forecasting with Missing Values**. CoIFNet is a unified deep learning framework designed to time series forecasting with missing values.
 
 *(**Note**: We are actively improving this work. If you have any questions or find any bugs, please feel free to create an issue in this repo.)*
 
-- **News(2025, 06)**:  Initial code release for CoIFNet.
+-  📰 **News(2025, 06)**:  Arxiv preprint available at [arXiv:2506.13064](https://arxiv.org/abs/2506.13064).
+-  📰 **News(2025, 06)**:  Initial code release for CoIFNet.
 
 ---
 
-## Highlights
+## ✨ Highlights
 
 > **Abstract:** Multivariate time series forecasting (MTSF) is a critical task with broad applications in domains such as meteorology, transportation, and economics. Nevertheless, pervasive missing values caused by sensor failures or human errors significantly degrade forecasting accuracy. Prior efforts usually employ an impute-then-forecast paradigm, leading to suboptimal predictions due to error accumulation and misaligned objectives between the two stages.To address this challenge, we propose the Collaborative Imputation-Forecasting Network (CoIFNet), a novel framework that unifies imputation and forecasting to achieve robust MTSF in the presence of missing values. Specifically, CoIFNet takes the observed values, mask matrix and timestamp embeddings as input, processing them sequentially through the Cross-Timestep Fusion (CTF) and Cross-Variate Fusion (CVF) modules to capture temporal dependencies that are robust to missing values. We provide theoretical justifications on how our CoIFNet learning objective improves the performance bound of MTSF with missing values. Through extensive experiments on challenging MSTF benchmarks, we demonstrate the effectiveness and computational efficiency of our proposed approach across diverse missing-data scenarios, e.g., CoIFNet outperforms the state-of-the-art method by $\underline{\textbf{24.40}}\%$ ($\underline{\textbf{23.81}}\%$) at a point (block) missing rate of 0.6, while improving memory and time efficiency by  $\underline{\boldsymbol{4.3\times}}$ and $\underline{\boldsymbol{2.1\times}}$, respectively. 
 
 <div align="center">
-  <img src="assets/coifnet_architecture.png" width="80%" alt="CoIFNet Framework"/>
+  <img src="assets/coifnet_architecture.png" width="100%" alt="CoIFNet Framework"/>
 </div>
-<p align="center"><i><b>Figure 1:</b> The overall architecture of CoIFNet.</i></p>
+<p align="center"><i><b>Figure 1:</b> Illustration of <b>CoIFNet</b>. </i></p> 
+
+> Unlike previous methods that employ an input-then-forecast paradigm, CoIFNet formulates imputation and forecasting in a unified framework to achieve robust MTSF with missing values.
+**First**, CoIFNet introduces a Reversible Observed-value Normalization (RevON) module to mitigate data distribution shifts across time steps within the input lookback window $\mathbf{X}$. **Next**, the normalized values together with mask matrix $\mathbf{M}^x$ and temporal embeddings $E^{\tau}$ are fed into the sequential Cross-Timestep Fusion (CTF) and Cross-Variate Fusion (CVF) modules to learn temporal dependencies along the time step and variate dimensions. **Finally**, the output series representations are projected to the original data space, where an imputation loss $\mathcal{L}_{\mathrm{I}}$ and a forecasting loss  $\mathcal{L}_{\mathrm{F}}$ are developed based on the de-normalized representations $\hat{\mathbf{X}}$ and $\hat{\mathbf{Y}}$ as well as the input lookback window $\mathbf{X}$ and forecasting window (ground truth) $\mathbf{Y}$.
+
 
 ---
 
-## Main Contributions
+## 🎯 Main Contributions
 
 > 1.  We propose CoIFNet, which unifies imputation and forecasting into a single framework to achieve robust MTSF in the presence of missing values.
 > 2.  We theoretically demonstrate the superiority of our one-stage CoIFNet framework over traditional two-stage approaches for handling missing values in time series forecasting.
@@ -30,11 +37,11 @@ Official implementation of the paper **CoIFNet: A Unified Framework for Multivar
 
 ---
 
-## Performance Highlights
+## 📊 Performance Highlights
 
 CoIFNet consistently achieves superior performance across multiple datasets and missing data scenarios.
 
-**Efficient and Effective**
+**Effectiveness and  Efficiency**
 <div align="center">
   <img src="assets/rad.png" width="45%" alt=""/>
   <img src="assets/params.png" width="45%" alt=""/>
@@ -42,22 +49,22 @@ CoIFNet consistently achieves superior performance across multiple datasets and 
 <p align="center"><i><b>Figure 2:</b> Overall performance and efficiency comparison with baseline models.</i></p>
 
 
-**Forecasting Performance in Point Missing**
+**Forecasting Performance under Various Missing-data Scenarios**
 <div align="center">
-  <img src="assets/point.png" width="80%" alt="Forecasting Performance Comparison in Point Missing "/>
+  <img src="assets/point.png" width="100%" alt="Forecasting Performance Comparison in Point Missing "/>
 </div>
-<p align="center"><i><b>Figure 3:</b> Forecasting performance (MSE/MAE) comparison under <b>point-wise missing</b> scenarios.</i></p>
+<p align="center"><i><b>Figure 3:</b> Comparison with state-of-the-arts on six real-world datasets under the <b>Point</b> missing rates of 0.3 and 0.6.</i></p>
 
-**Forecasting Performance in Point Missing**
 <div align="center">
-  <img src="assets/block.png" width="80%" alt="Forecasting Performance Comparison in Block Missing"/>
+  <img src="assets/block.png" width="100%" alt="Forecasting Performance Comparison in Block Missing"/>
 </div>
-<p align="center"><i><b>Figure 4:</b> Forecasting performance (MSE/MAE) comparison under <b>block-wise missing</b> scenarios.</i></p>
-
+<p align="center"><i><b>Figure 4:</b> Comparison with state-of-the-arts on six real-world datasets under the <b>Block</b> missing rates of 0.3 and 0.6.</i></p>
 
 ---
 
-## Installation
+## 🚀 Quick Start
+
+### Installation
 
 This codebase has been tested on Ubuntu 22.04 with Python 3.11 and PyTorch 2.1. We recommend using `uv` for fast and reliable dependency management.
 
@@ -75,7 +82,7 @@ uv sync
 
 ---
 
-## Data Preparation
+### Data Preparation
 
 1.  Download the required datasets (e.g., ETT, Weather, etc.). A common source is the [Autoformer repository](https://github.com/thuml/Autoformer/tree/main/data).
 2.  Place all dataset files (e.g., `ETTh1.csv`) into a single directory.
@@ -83,7 +90,7 @@ uv sync
 
 ---
 
-## Training and Evaluation
+### Training and Evaluation
 
 We use [Hydra](https://hydra.cc/) for configuration management, making it easy to run experiments. All configurations are located in the `conf/` directory.
 
@@ -98,7 +105,7 @@ uv run python main.py dataset=etth1 model=CoIFNet
 ```
 All outputs, including logs, model checkpoints, and final results, will be saved to the `outputs/` directory, organized by date and time.
 
-### Experiment Tracking with MLflow (Optional)
+#### Experiment Tracking with MLflow (Optional)
 The project is integrated with MLflow for advanced experiment tracking.
 
 ```bash
@@ -116,7 +123,7 @@ Your runs will now be logged to the MLflow UI, accessible at `http://localhost:5
 
 ---
 
-# Project Structure
+# 📂 Project Structure
 <details>
 <summary>Click to expand</summary>
 
@@ -140,20 +147,24 @@ CoIFNet/
 
 ---
 
-# Citation
+# 📜 Citation
 
 If you find this work useful for your research, please consider citing our paper:
 ```bibtex
-@article{coifnet2025,
-    title={CoIFNet: A Unified Framework for Multivariate Time Series Forecasting with Missing Values},
-    author={Tang, Kai and Zhang, Ji* and Meng, Hua and Ma, Minbo and Xiong, Qi and Lv, Fengmao and Xu, Jie and Li, Tianrui},
-    year={2025},
+@article{tang2025coifnet,
+      title={CoIFNet: A Unified Framework for Multivariate Time Series Forecasting with Missing Values}, 
+      author={Tang, Kai and Zhang, Ji and Meng, Hua and Ma, Minbo and Xiong, Qi and Lv, Fengmao and Xu, Jie and Li, Tianrui},
+      year={2025},
+      eprint={2506.13064},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2506.13064}, 
 }
 ```
 
 ---
 
-# Acknowledgements
+# 🙏 Acknowledgements
 Our implementation benefits from several open-source projects. We would like to thank the authors of:
 - [Autoformer](https://github.com/thuml/Autoformer) for the datasets and data processing scripts.
 - [RevIN](https://github.com/ts-kim/RevIN) for the reversible instance normalization concept.
